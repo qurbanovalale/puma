@@ -4,13 +4,15 @@ import { FaRegUser, FaAngleRight } from "react-icons/fa6";
 import { FiShoppingCart } from "react-icons/fi";
 import { IoMdClose, IoMdArrowBack } from "react-icons/io";
 import { PumaContext } from '../context/DataContext';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function BurgerMenu({ onClose }) {
     const { data } = useContext(PumaContext);
     const [selectedCategory, setSelectedCategory] = useState(null);
     const [selectedSubCategory, setSelectedSubCategory] = useState(null);
     const [breadcrumb, setBreadcrumb] = useState([]);
+
+    const navigate = useNavigate()
 
     const handleCategoryClick = (category) => {
         setSelectedCategory(category);
@@ -79,11 +81,21 @@ function BurgerMenu({ onClose }) {
                                         </li>
                                     ))}
                                     {/* Static Links */}
-                                    {["My Account", "Initiate Return", "Order Status", "Contact Us", "Wishlist"].map((item, idx) => (
-                                        <li key={idx} className='text-[16px] text-[#181818] p-2 border-b border-gray-200 cursor-pointer'>
-                                            {item}
-                                        </li>
-                                    ))}
+                                    <li key={idx} className='text-[16px] text-[#181818] p-2 border-b border-gray-200 cursor-pointer'>
+                                        My Account
+                                    </li>
+                                    <li key={idx} className='text-[16px] text-[#181818] p-2 border-b border-gray-200 cursor-pointer'>
+                                        Initate Return
+                                    </li>
+                                    <li key={idx} className='text-[16px] text-[#181818] p-2 border-b border-gray-200 cursor-pointer'>
+                                        Order Status
+                                    </li>
+                                    <li key={idx} className='text-[16px] text-[#181818] p-2 border-b border-gray-200 cursor-pointer'>
+                                        Contact Us
+                                    </li>
+                                    <li key={idx} onClick={() => navigate("/wishlist")} className='text-[16px] text-[#181818] p-2 border-b border-gray-200 cursor-pointer'>
+                                        Wishlist
+                                    </li>
                                     <li className='flex justify-between items-center text-[16px] p-2 border-b border-gray-200 cursor-pointer'>
                                         Language
                                         <div className='flex items-center'>
