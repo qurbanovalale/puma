@@ -81,19 +81,19 @@ function BurgerMenu({ onClose }) {
                                         </li>
                                     ))}
                                     {/* Static Links */}
-                                    <li key={idx} className='text-[16px] text-[#181818] p-2 border-b border-gray-200 cursor-pointer'>
+                                    <li  className='text-[16px] text-[#181818] p-2 border-b border-gray-200 cursor-pointer'>
                                         My Account
                                     </li>
-                                    <li key={idx} className='text-[16px] text-[#181818] p-2 border-b border-gray-200 cursor-pointer'>
+                                    <li className='text-[16px] text-[#181818] p-2 border-b border-gray-200 cursor-pointer'>
                                         Initate Return
                                     </li>
-                                    <li key={idx} className='text-[16px] text-[#181818] p-2 border-b border-gray-200 cursor-pointer'>
+                                    <li  className='text-[16px] text-[#181818] p-2 border-b border-gray-200 cursor-pointer'>
                                         Order Status
                                     </li>
-                                    <li key={idx} className='text-[16px] text-[#181818] p-2 border-b border-gray-200 cursor-pointer'>
+                                    <li  className='text-[16px] text-[#181818] p-2 border-b border-gray-200 cursor-pointer'>
                                         Contact Us
                                     </li>
-                                    <li key={idx} onClick={() => navigate("/wishlist")} className='text-[16px] text-[#181818] p-2 border-b border-gray-200 cursor-pointer'>
+                                    <li onClick={() => navigate("/wishlist")} className='text-[16px] text-[#181818] p-2 border-b border-gray-200 cursor-pointer'>
                                         Wishlist
                                     </li>
                                     <li className='flex justify-between items-center text-[16px] p-2 border-b border-gray-200 cursor-pointer'>
