@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+/* public/globals.css və ya styles/index.css faylınıza əlavə edin */
+
+#long-description h3 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #181818;
+}
+
+#long-description p {
+    font-size: 16px;
+    color: #181818;
+}
+
+/* #long-description ul {
+    list-style-type: disc;
+   
+    padding-left: 20px;
+} */
+#long-description li::before {
+  content: "• "; 
+  color: #8A7350; 
+  font-size: 20px;
+}
