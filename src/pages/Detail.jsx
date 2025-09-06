@@ -168,12 +168,7 @@ function Detail() {
                                 })}
                             </div>
 
-                            <a
-                                href="#"
-                                className="block mt-4 text-sm underline text-gray-600"
-                            >
-                                Size chart
-                            </a>
+                          
                         </div>
 
                         <div className="mt-6">

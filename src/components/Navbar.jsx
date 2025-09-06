@@ -66,8 +66,7 @@ function Navbar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  if (loader) return <div>{<Loading />}</div>;
+  
   if (error) return <div>Xəta: {error}</div>;
   const totalFavoriteItems = favorites.length
   const totalShoppingItems = cart.length
@@ -114,16 +113,31 @@ function Navbar() {
               <div className="relative" ref={dropdownRef}>
                 <FaRegUser onClick={toggleUserDropdown} className="cursor-pointer" />
                 {isUserDropdownOpen && (
-                  <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50">
-                    <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">My Account</a>
-                    <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Initiate Return</a>
-                    <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Contact Us</a>
-                    <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Wishlist</a>
-                    <div className="border-t border-gray-100"></div>
-                    <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Language    EN</a>
-                    <div className="border-t border-gray-100"></div>
-                    <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 font-semibold">LOGIN</a>
-                    <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 font-semibold">JOIN US</a>
+                  <div className="absolute right-0 mt-2 w-56 bg-white rounded-md shadow-lg py-1 z-50">
+                    <p className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">My Account</p>
+                    <p className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Initiate Return</p>
+                    <p className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Contact Us</p>
+                    <p onClick={() => navigate("/wishlist")} className="block cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Wishlist</p>
+                    <div className="border-t border-gray-100 my-2"></div>
+
+                    <div className="flex flex-col gap-2 px-2">
+
+                      <p
+
+                        className="w-full text-center py-2 rounded-md bg-[#191919] text-white text-sm font-semibold hover:bg-gray-800"
+                      >
+                        LOGIN
+                      </p>
+
+
+                      <p
+
+                        className="w-full text-center py-2 rounded-md border border-gray-300 bg-white text-sm text-gray-700 font-semibold hover:bg-gray-100"
+                      >
+                        JOIN US
+                      </p>
+
+                    </div>
                   </div>
                 )}
               </div>
@@ -213,7 +227,7 @@ function Navbar() {
                         <p className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">My Account</p>
                         <p className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Initiate Return</p>
                         <p className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Contact Us</p>
-                        <p className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Wishlist</p>
+                        <p onClick={() => navigate("/wishlist")} className="block px-4 cursor-pointer py-2 text-sm text-gray-700 hover:bg-gray-100">Wishlist</p>
                         <div className="border-t border-gray-100 my-2"></div>
 
                         <div className="flex flex-col gap-2 px-2">
