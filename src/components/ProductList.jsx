@@ -389,9 +389,7 @@ function ProductList() {
                     />
                   </div>
                   <p className="text-xs text-gray-500 py-[20px]">
-                    {item.colors?.length
-                      ? `${item.colors.length} COLORS`
-                      : "1 COLOR"}
+                    
                   </p>
                   <div className="flex justify-between items-start mt-1 text-[16px] text-[#191919]">
                     <h2 className="text-sm font-bold">{item.header}</h2>
