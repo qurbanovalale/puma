@@ -2,6 +2,8 @@ import React, { useContext, useState } from 'react';
 import { PumaContext } from '../context/DataContext';
 import { FaRegTrashAlt, FaPen } from 'react-icons/fa';
 import { Link, useParams } from 'react-router-dom';
+import { TbTruckDelivery, TbRefresh } from 'react-icons/tb';
+import { FaChevronDown } from "react-icons/fa";
 
 const ShoppingCart = () => {
     const { cart, removeFromCart, updateCartQuantity, updateCartItem } = useContext(PumaContext);
@@ -32,13 +34,13 @@ const ShoppingCart = () => {
     }
 
     return (
-        <div className="container mx-auto px-4 py-8">
-            <h1 className="text-3xl font-bold mb-6">MY SHOPPING CART ({cart.reduce((acc, item) => acc + item.quantity, 0)})</h1>
-            <div className="lg:flex lg:gap-8">
+        <div className=" mx-auto p-[20px_25px]">
+            <h1 className="text-[28px] text-[#191919] font-bold mb-6">MY SHOPPING CART ({cart.reduce((acc, item) => acc + item.quantity, 0)})</h1>
+            <div className="lg:flex justify-between items-center lg:gap-8">
                 {/* Sol Tərəf - Məhsullar */}
-                <div className="lg:w-2/3">
+                <div className=" flex flex-col gap-[15px] lg:w-2/3">
                     {cart.map(item => (
-                        <div key={`${item.id}-${item.selectedSize}`} className="flex flex-col sm:flex-row gap-4 border-b py-6">
+                        <div key={`${item.id}-${item.selectedSize}`} className="flex flex-col sm:flex-row gap-4 border border-gray-200 p-[30px]">
                             <Link to={`/puma/${categorySlug}/${subcategorySlug}/${childSlug}/${encodeURIComponent(item.name)}/${item.id}`}>
                                 <img src={item.variations[0].images[0].href} alt={item.name} className="w-full sm:w-32 sm:h-32 object-cover" />
                             </Link>
@@ -46,9 +48,9 @@ const ShoppingCart = () => {
                                 <div>
                                     <h3 className="font-bold text-lg">{item.header}</h3>
                                     <p className="text-gray-600">{item.subHeader}</p>
-                                    <p className="text-sm">Color: {item.variations[0].colorName}</p>
-                                    <p className="text-sm">Size: {item.selectedSize}</p>
-                                    <p className="text-sm">Style: {item.variations[0].styleNumber}</p>
+                                    <p className="text-sm text-[#50565e]">Color: <span className='text-[#191919]'> {item.variations[0].colorName}</span> </p>
+                                    <p className="text-sm text-[#50565e]">Size: <span className='text-[#191919]'> {item.selectedSize}</span> </p>
+                                    <p className="text-sm text-[#50565e]">Style: <span className='text-[#191919]'>{item.variations[0].styleNumber}</span> </p>
                                 </div>
                                 <div className="flex items-center gap-4 mt-2">
                                     <select
@@ -72,9 +74,28 @@ const ShoppingCart = () => {
                 </div>
 
                 {/* Sağ Tərəf - Xülasə */}
-                <div className="lg:w-1/3 mt-8 lg:mt-0 bg-gray-50 p-6 h-fit sticky top-24">
-                    <h2 className="text-xl font-bold border-b pb-4">ORDER SUMMARY</h2>
-                    <div className="space-y-2 mt-4">
+                <div className="lg:w-1/3 mt-8 lg:mt-0 p-6 h-fit flex flex-col gap-[15px] sticky top-24">
+                <div className='flex flex-col gap-[10px]'>
+                    <div className='text-[14px] flex gap-[10px] justify-center items-center text-[#008626] font-semibold border border-gray-200 p-[3px_10px] uppercase'>
+                          <TbTruckDelivery size={24} className='text-[#008626]' />
+                          You’ve earned free shipping
+                    </div>
+                    <div className='text-[14px]  flex gap-[10px] justify-center items-center text-[#50565e] font-semibold border border-gray-200 p-[3px_10px] uppercase'>
+                        <TbRefresh size={24} className='text-[#50565e]' />
+                        Free returns on all qualifying orders.
+                    </div>
+                </div>
+                <div className='flex flex-col gap-[12px] border-b border-gray-200 pb-4'>
+                    <div className='bg-[#dfe0e1] p-[15px_20px] flex justify-between text-[#191919] text-[20px] items-center uppercase'>
+                        Apply a promo code
+                        <FaChevronDown />
+                    </div>
+                    <div className='flex justify-between items-center'>
+                        <input type="text" className='p-[20px_50px] border bg-white' placeholder='Enter a promo code' />
+                        <div className='text-[#3b4047] bg-[#dfe0e1] p-[20px_30px] ' >Apply</div>
+                    </div>
+                </div>
+                    <div className="space-y-2 mt-4 text-[#50565e] text-[14px] font-semibold">
                         <div className="flex justify-between">
                             <span>Subtotal</span>
                             <span>${subtotal.toFixed(2)}</span>
@@ -88,11 +109,11 @@ const ShoppingCart = () => {
                             <span>--</span>
                         </div>
                     </div>
-                    <div className="flex justify-between font-bold text-lg border-t mt-4 pt-4">
+                    <div className="flex justify-between font-bold text-lg border-t border-gray-200 mt-4 pt-4 text-[#191919] text-[20px]">
                         <span>Estimated Total</span>
                         <span>${subtotal.toFixed(2)}</span>
                     </div>
-                    <button className="w-full bg-black text-white font-bold py-3 mt-6">CHECKOUT</button>
+                    <button className="w-full bg-[#191919] text-white font-bold py-3 mt-6">CHECKOUT</button>
                 </div>
             </div>
 

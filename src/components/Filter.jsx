@@ -101,62 +101,13 @@ export default function Filter({
             ))}
           </div>
         </FilterSection>
-
-
-        {/* <FilterSection title="Price" isOpen={openSection === 'price'} onToggle={() => toggleSection('price')}>
-          <div className="flex items-center gap-4 mb-4">
-            <div className="relative w-1/2">
-              <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">$</span>
-              <input
-                type="number"
-                name="from"
-                value={priceValues.from}
-                onChange={handlePriceInputChange}
-                onBlur={handlePriceInputBlur}
-                className="w-full border border-gray-300 rounded-sm p-2 pl-6"
-                placeholder={`$ ${options.prices.min}`}
-              />
-            </div>
-            <span className="text-gray-500">-</span>
-            <div className="relative w-1/2">
-              <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">$</span>
-              <input
-                type="number"
-                name="to"
-                value={priceValues.to}
-                onChange={handlePriceInputChange}
-                onBlur={handlePriceInputBlur}
-                className="w-full border border-gray-300 rounded-sm p-2 pl-6"
-                placeholder={`$ ${options.prices.max}`}
-              />
-            </div>
-          </div>
-
-         
-          <div className="mt-[30px] mb-[] flex justify-center items-center">
-            <Range
-              step={5}
-              min={options.prices.min}
-              max={options.prices.max}
-              values={[priceValues.from, priceValues.to]}
-              onChange={([from, to]) => setPriceValues({ from, to })}
-              onFinalChange={([from, to]) => onFilterChange('price', { from, to })}
-              renderTrack={({ props, children }) => (
-                <div {...props} className="h-1 w-[370px]  bg-black rounded-full">
-                  {children}
-                </div>
-              )}
-              renderThumb={({ props }) => (
-                <div {...props} className="h-8 w-8 bg-black rounded-full" />
-              )}
-            />
-          </div>
-        </FilterSection> */}
         <FilterSection title="Price" isOpen={openSection === 'price'} onToggle={() => toggleSection('price')}>
           {(() => {
+            const roundToStep = (value, step) => Math.round(value / step) * step;
+
             const safePriceValues = {
-              from: Math.max(options.prices.min, Math.min(priceValues.from, options.prices.max)),
-              to: Math.max(options.prices.min, Math.min(priceValues.to, options.prices.max)),
+              from: roundToStep(Math.max(options.prices.min, Math.min(priceValues.from, options.prices.max)), 5),
+              to: roundToStep(Math.max(options.prices.min, Math.min(priceValues.to, options.prices.max)), 5),
             };
 
             if (options.prices.min === options.prices.max) {
@@ -205,14 +156,21 @@ export default function Filter({
                     values={[safePriceValues.from, safePriceValues.to]}
                     onChange={([from, to]) => setPriceValues({ from, to })}
                     onFinalChange={([from, to]) => onFilterChange('price', { from, to })}
-                    renderTrack={({ props, children }) => (
-                      <div {...props} className="h-1 w-[370px] bg-black rounded-full">
-                        {children}
-                      </div>
-                    )}
-                    renderThumb={({ props }) => (
-                      <div {...props} className="h-8 w-8 bg-black rounded-full" />
-                    )}
+                    renderTrack={({ props, children }) => {
+                      const { key, ...restProps } = props;
+                      return (
+                        <div key={key} {...restProps} className="h-1 w-[370px] bg-black rounded-full">
+                          {children}
+                        </div>
+                      );
+                    }}
+
+                    renderThumb={({ props }) => {
+                      const { key, ...restProps } = props;
+                      return (
+                        <div key={key} {...restProps} className="h-8 w-8 bg-black rounded-full" />
+                      );
+                    }}
                   />
                 </div>
               </>

@@ -25,7 +25,6 @@ function Detail() {
     if (!product) {
         return <Loading />;
     }
-    console.log(product);
 
     const handleAddToCart = () => {
         if (!selectedSize) {
@@ -64,7 +63,7 @@ function Detail() {
             <div className="text-[15px] md:text-[17px] text-[#191919] flex flex-wrap items-center gap-[5px] md:gap-[10px] mb-4">
                 <p className="font-semibold">Home</p>
                 {categoryHierarchy.map((item, index) => (
-                    <div key={item.id} className='flex items-center gap-[5px]'>
+                    <div key={index + 2} className='flex items-center gap-[5px]'>
                         <TbPointFilled className="text-gray-500" size={12} />
                         <p className='font-semibold whitespace-nowrap'>{item.categoryName}</p>
                     </div>
