@@ -29,10 +29,21 @@ const getProductById = async (id) => {  // Named export
         throw error;
     }
 };
+const getAllUsers = async () => {
+  const res = await pumaInstance.get("/users");
+  return res.data;
+};
+
+const createUser = async (user) => {
+  const res = await pumaInstance.post("/users", user);
+  return res.data;
+};
 
 export {
     getAllCategories,
     getAllProducts,
-    getProductById
+    getProductById,
+    getAllUsers,
+    createUser
 }
 

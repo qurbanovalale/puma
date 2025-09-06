@@ -6,6 +6,9 @@ import Detail from './pages/Detail'
 import WishList from './pages/WishList'
 import { ToastContainer } from 'react-toastify';
 import ShoppingCart from './pages/ShoppingCart'
+import SignUp from './pages/SignUp'
+import SignIn from './pages/SignIn'
+
 
 
 function App() {
@@ -21,6 +24,8 @@ function App() {
           <Route path="/puma/:categorySlug/:subcategorySlug/:childSlug/:name/:id" element={<Detail />} />
           <Route path="/wishlist" element={<WishList />} />
           <Route path="/cart" element={<ShoppingCart />} />
+          <Route path="/puma/signup" element={<SignUp />} />
+          <Route path="/puma/signin" element={<SignIn />} />
         </Route>
       </Routes>
         <ToastContainer />
